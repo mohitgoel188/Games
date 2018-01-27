@@ -2,15 +2,15 @@ import random
 
 def main():
     while True:
-        print('''\nRock(O) , Paper([]) and Scissor(>8)
+        print('''\nFire(-~<{) , Logs(|||) and Water(~~~)
             
-    Rock blunts scissors
-    Paper covers rock
-    Scissors cut paper
+    Fire burns Logs
+    Logs makes a bridge over Water
+    Water puts out Fire
 ''')
-        c=input('Enter your Choice(r,p or s): ')
-        sym={'s':'>8','p':'[]','r':'oOo'}
-        rules_win={'>8':'[]','[]':'oOo','oOo':'>8'}
+        c=input('Enter your Choice(f,l or w): ')
+        sym={'f':'-~<{','l':'|||','w':'~~~'}
+        rules_win={'-~<{':'|||','|||':'~~~','~~~':'-~<{'}
         try:
             inp=sym[c.lower()]
         except:
