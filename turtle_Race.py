@@ -1,6 +1,6 @@
 from turtle import *
 import time
-from random import randint
+import numpy as np
 
 def main():
     speed(6)
@@ -15,49 +15,32 @@ def main():
         backward(230)
         left(90)
         forward(20)
-    ada=Turtle()
-    ada.color('blue')
-    ada.shape('turtle')
-    ada.penup()
-    ada.goto(0,-20)
-    ada.pendown()
-    rada=Turtle()
-    rada.color('red')
-    rada.shape('turtle')
-    rada.penup()
-    rada.goto(0,-60)
-    rada.pendown()
-    bada=Turtle()
-    bada.color('black')
-    bada.shape('turtle')
-    bada.penup()
-    bada.goto(0,-100)
-    bada.pendown()
-    yada=Turtle()
-    yada.color('yellow')
-    yada.shape('turtle')
-    yada.penup()
-    yada.goto(0,-140)
-    yada.pendown()
-    gada=Turtle()
-    gada.color('green')
-    gada.shape('turtle')
-    gada.penup()
-    gada.goto(0,-180)
-    gada.pendown()
-    brada=Turtle()
-    brada.color('brown')
-    brada.shape('turtle')
-    brada.penup()
-    brada.goto(0,-220)
-    brada.pendown()
-    for turn in range(100):
-        ada.forward(randint(1,5))
-        bada.forward(randint(1,5))
-        rada.forward(randint(1,5))
-        yada.forward(randint(1,5))
-        gada.forward(randint(1,5))
-        brada.forward(randint(1,5))
-    time.sleep(3)
+    turt=np.empty(6,object)
+    pos=np.empty(6,object)
+    for i in range(6):
+        turt[i]=Turtle()
+        turt[i].speed(4)
+        turt[i].color([float(x) for x in np.random.rand(3)])
+        turt[i].shape('turtle')
+        turt[i].penup()
+        turt[i].goto(0,-20-40*i)
+        pos[i]=turt[i].position()
+        turt[i].pendown()
+    progress=np.zeros(6)    
+    #for turn in range(100):
+    while True:
+        for i in range(6):
+            val=np.random.randint(1,5)
+            turt[i].forward(val)
+            progress[i]+=val
+            #print(i,'--',turt[i].position(),' VS ',pos[i])
+            if turt[i].position()<=pos[i]:
+                time.sleep(3)
+                exit()
+            elif progress[i]>=280:
+                progress[i]=0
+                turt[i].right(180)
+        #print('')
+
 if __name__ == '__main__':
     main()
