@@ -44,6 +44,19 @@ def race(turtle_mat,turtle_pos,length=280,max_step=8):
             elif progress[i]>=length:
                 progress[i]=-max_step
                 turtle_mat[i].right(180)
+def hello():
+    screen = Screen()
+    screen.setup(400,400)
+    screen.bgcolor('#273712')
+    color()
+    dot(300,'#893781')
+    color('#B37101')
+    style=('Verdana',40,'bold')
+    write('HELLO',font=style,align='center')
+    #hideturtle()
+    time.sleep(5)
+    clearscreen()
+
 def main():
     print('\n\t\t\t\tTURTLE RACE\n\nEnter Details:-\t\t\t\t\t(Press only ENTER to pass default values)')
     while True:
@@ -58,6 +71,7 @@ def main():
             print('\nEnter Details correctly in INTEGERS.\n')
             # race_course()
             # race(*turtles())   
+    hello()
     race_course(s,b,l)
     turt,pos=turtles(b,n,s)
     race(turt,pos,l,ms)
